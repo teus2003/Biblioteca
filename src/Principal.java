@@ -10,6 +10,7 @@ public class Principal {
         System.out.println("1 - Buscar livro");
         System.out.println("2 - Mostrar todos os livros");
         System.out.println("3 -Emprestar livro");
+        System.out.println("4 - Devolver livro");
 
         int opcao = scanner.nextInt();
         scanner.nextLine();
@@ -65,7 +66,19 @@ public class Principal {
             }
 
         }
-
+        if(opcao == 4) {
+            System.out.println("Digite o nome do livro");
+            String livroDigitado = scanner.nextLine().trim();
+            for(Livro livro : listaDeLivros) {
+                if(livro.getTitulo().equalsIgnoreCase(livroDigitado)){
+                    livro.devolver();
+                    encontrado = true;
+                }
+            }
+            if(!encontrado){
+                System.out.println("Livro nao encontrado");
+            }
+        }
     }
 }
 
