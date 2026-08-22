@@ -16,13 +16,16 @@ public class Principal {
         listaDeLivros.add(livro3);
 
         int opcao = 0;
-        while (opcao != 5) {
+        while (opcao != 6) {
             System.out.println("=====BIBLIOTECA====");
             System.out.println("1 - Buscar livro");
             System.out.println("2 - Mostrar todos os livros");
-            System.out.println("3 -Emprestar livro");
+            System.out.println("3 - Emprestar livro");
             System.out.println("4 - Devolver livro");
-            System.out.println("5 - Sair");
+            System.out.println("5 - Cadastrar livrto");
+            System.out.println("6 - Sair");
+
+
             opcao = scanner.nextInt();
             scanner.nextLine();
 
@@ -79,6 +82,18 @@ public class Principal {
                 if (!encontrado) {
                     System.out.println("Livro nao encontrado");
                 }
+            }
+            if(opcao ==5) {
+                System.out.println("Digite o nome do livro para o cadastro");
+                String tituloDigitado = scanner.nextLine().trim();
+                System.out.println("Digite o autor para cadastro");
+                String AutorDigitado = scanner.nextLine().trim();
+                System.out.println("Digite o ano para cadastro");
+                Integer anoDigitado = scanner.nextInt();
+                scanner.nextLine();
+                Livro novoLivro = new Livro(tituloDigitado,AutorDigitado, anoDigitado);
+                listaDeLivros.add(novoLivro);
+                System.out.println("Livro Cadastrado com sucesso!!!");
             }
         }
     }
