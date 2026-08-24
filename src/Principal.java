@@ -16,14 +16,15 @@ public class Principal {
         listaDeLivros.add(livro3);
 
         int opcao = 0;
-        while (opcao != 6) {
+        while (opcao != 7) {
             System.out.println("=====BIBLIOTECA====");
             System.out.println("1 - Buscar livro");
             System.out.println("2 - Mostrar todos os livros");
             System.out.println("3 - Emprestar livro");
             System.out.println("4 - Devolver livro");
             System.out.println("5 - Cadastrar livrto");
-            System.out.println("6 - Sair");
+            System.out.println("6 - Remover livro");
+            System.out.println("7 - Sair");
 
 
             opcao = scanner.nextInt();
@@ -94,6 +95,23 @@ public class Principal {
                 Livro novoLivro = new Livro(tituloDigitado,AutorDigitado, anoDigitado);
                 listaDeLivros.add(novoLivro);
                 System.out.println("Livro Cadastrado com sucesso!!!");
+            }
+            if(opcao==6) {
+                System.out.println("Digite o nome do livro");
+                String livroDigitado = scanner.nextLine().trim();
+                Livro livroRemovido = null;
+                for (Livro livro : listaDeLivros) {
+                    if (livro.getTitulo().equalsIgnoreCase(livroDigitado)) {
+                        encontrado = true;
+                        livroRemovido = livro;
+                    }
+                }
+                listaDeLivros.remove(livroRemovido);
+                System.out.println("livro removido com sucesso!");
+                //
+                if (!encontrado) {
+                    System.out.println("Livro não encontrado!");
+                }
             }
         }
     }
