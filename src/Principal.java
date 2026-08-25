@@ -32,86 +32,98 @@ public class Principal {
 
             encontrado = false;
 
-            if (opcao == 1) {
-                System.out.print("Digite o nome do livro");
-                String livroDigitado = scanner.nextLine().trim();
+            switch (opcao) {
+                case 1:
+
+                    System.out.print("Digite o nome do livro");
+                    String livroProcurado = scanner.nextLine().trim();
 
 
-                for (Livro livro : listaDeLivros) {
+                    for (Livro livro : listaDeLivros) {
 
-                    if (livro.getTitulo().equalsIgnoreCase(livroDigitado)) {
-                        livro.mostrarInformacoes();
-                        System.out.println("Livro encontrado");
-                        encontrado = true;
+                        if (livro.getTitulo().equalsIgnoreCase(livroProcurado)) {
+                            livro.mostrarInformacoes();
+                            System.out.println("Livro encontrado");
+                            encontrado = true;
+                        }
+
+
                     }
-
-
-                }
-                if (!encontrado) {
-                    System.out.println("Livro nao encontrado");
-                }
-
-            }
-            if (opcao == 2) {
-                for (Livro livro : listaDeLivros) {
-                    livro.mostrarInformacoes();
-                }
-            }
-            if (opcao == 3) {
-                System.out.print("Digite o nome do livro");
-                String livroDigitado = scanner.nextLine().trim();
-                for (Livro livro : listaDeLivros) {
-                    if (livro.getTitulo().equalsIgnoreCase(livroDigitado)) {
-                        livro.emprestar();
-                        encontrado = true;
+                    if (!encontrado) {
+                        System.out.println("Livro nao encontrado");
                     }
-                }
-                if (!encontrado) {
-                    System.out.println("Livro não encontrado!");
-                }
-
-            }
-            if (opcao == 4) {
-                System.out.println("Digite o nome do livro");
-                String livroDigitado = scanner.nextLine().trim();
-                for (Livro livro : listaDeLivros) {
-                    if (livro.getTitulo().equalsIgnoreCase(livroDigitado)) {
-                        livro.devolver();
-                        encontrado = true;
-                    }
-                }
-                if (!encontrado) {
-                    System.out.println("Livro nao encontrado");
-                }
-            }
-            if(opcao ==5) {
-                System.out.println("Digite o nome do livro para o cadastro");
-                String tituloDigitado = scanner.nextLine().trim();
-                System.out.println("Digite o autor para cadastro");
-                String AutorDigitado = scanner.nextLine().trim();
-                System.out.println("Digite o ano para cadastro");
-                Integer anoDigitado = scanner.nextInt();
-                scanner.nextLine();
-                Livro novoLivro = new Livro(tituloDigitado,AutorDigitado, anoDigitado);
-                listaDeLivros.add(novoLivro);
-                System.out.println("Livro Cadastrado com sucesso!!!");
-            }
-            if(opcao==6) {
-                System.out.println("Digite o nome do livro");
-                String livroDigitado = scanner.nextLine().trim();
-                Livro livroRemovido = null;
-                for (Livro livro : listaDeLivros) {
-                    if (livro.getTitulo().equalsIgnoreCase(livroDigitado)) {
-                        encontrado = true;
-                        livroRemovido = livro;
-                    }
-                }
-                listaDeLivros.remove(livroRemovido);
-                System.out.println("livro removido com sucesso!");
+                    break;
                 //
-                if (!encontrado) {
-                    System.out.println("Livro não encontrado!");
-                }
+                case 2:
+                    for (Livro livro : listaDeLivros) {
+                        livro.mostrarInformacoes();
+                    }
+                    break;
+                //
+                case 3:
+                    System.out.print("Digite o nome do livro");
+                    String livroEmprestar = scanner.nextLine().trim();
+                    for (Livro livro : listaDeLivros) {
+                        if (livro.getTitulo().equalsIgnoreCase(livroEmprestar)) {
+                            livro.emprestar();
+                            encontrado = true;
+                        }
+                    }
+                    if (!encontrado) {
+                        System.out.println("Livro não encontrado!");
+
+                    }
+                    //
+                    break;
+                case 4:
+
+                    System.out.println("Digite o nome do livro");
+                    String livroDevolvido = scanner.nextLine().trim();
+                    for (Livro livro : listaDeLivros) {
+                        if (livro.getTitulo().equalsIgnoreCase(livroDevolvido)) {
+                            livro.devolver();
+                            encontrado = true;
+                        }
+                    }
+                    if (!encontrado) {
+                        System.out.println("Livro nao encontrado");
+                    }
+                    break;
+                //
+                case 5:
+                    System.out.println("Digite o nome do livro para o cadastro");
+                    String tituloDigitado = scanner.nextLine().trim();
+                    System.out.println("Digite o autor para cadastro");
+                    String AutorDigitado = scanner.nextLine().trim();
+                    System.out.println("Digite o ano para cadastro");
+                    Integer anoDigitado = scanner.nextInt();
+                    scanner.nextLine();
+                    Livro novoLivro = new Livro(tituloDigitado, AutorDigitado, anoDigitado);
+                    listaDeLivros.add(novoLivro);
+                    System.out.println("Livro Cadastrado com sucesso!!!");
+                    break;
+                //
+
+                case 6:
+                    System.out.print("Digite o nome do livro");
+                    String livroDigitado = scanner.nextLine().trim();
+                    Livro livroRemovido = null;
+                    for (Livro livro : listaDeLivros) {
+                        if (livro.getTitulo().equalsIgnoreCase(livroDigitado)) {
+                            encontrado = true;
+                            livroRemovido = livro;
+                            System.out.println("livro removido com sucesso!");
+                        }
+                    }
+                    listaDeLivros.remove(livroRemovido);
+                    if (!encontrado) {
+                        System.out.println("Livro não encontrado!");
+                    }
+                    break;
+                //
+                case 7:
+                    System.out.println("Saindo da biblioteca...");
+                    break;
             }
         }
     }
